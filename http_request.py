@@ -56,6 +56,3 @@ picture = picture[pos+4:]
 fhand = open("stuff.jpg", "wb")
 fhand.write(picture)
 fhand.close()
-
-
-
