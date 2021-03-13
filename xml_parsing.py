@@ -11,3 +11,24 @@ data = '''<person>
 tree = ET.fromstring(data)
 print('Name:', tree.find('name').text)
 print('Attr:', tree.find('email').get('hide'))
+
+input = '''<stuff>
+    <users>
+        <user x="2">
+            <id>001</id>
+            <name>Chuck</name>
+        </user>
+        <user x="7">
+            <id>009</id>
+            <name>Brent</name>
+        </user>
+    </users>
+</stuff>'''
+
+stuff = ET.fromstring(input)
+first = stuff.findall('users/user')
+print('User count:', len(first))
+for item in first:
+    print('Name', item.find('name').text)
+    print('Id', item.find('id').text)
+    print('Attribute', item.get('x'))
