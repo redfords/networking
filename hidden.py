@@ -1,3 +1,6 @@
+# https://apps.twitter.com/
+# create new app and get the four strings
+
 def oauth():
     return {"consumer_key": "h7LuNg",
             "consumer_secret": "dNKenAC3Newmmn7Q",
