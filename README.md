@@ -2,7 +2,7 @@
 
 Networking: sockets, urllib, BeautifulSoup
 
-Web services: XML, JSON, APIs
+Web services: XML, JSON, APIs, REST APIs, HTTP Requests
 
 ## Resources
 
