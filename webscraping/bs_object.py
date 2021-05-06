@@ -7,8 +7,6 @@ soup = BeautifulSoup(html, 'html5lib')
 
 print(soup)
 
-""" BeautifulSoup objects """
-
 tag_object = soup.title
 print(tag_object)
 # <title>Page Title</title>
@@ -33,25 +31,3 @@ sibling_2 = sibling_1.next_sibling
 
 print(tag_child.attrs)
 print(tag_child.string)
-
-""" Filter find_all """
-
-html = "<table><tr><td>Pizza Place</td><td>Orders</td><td>Slices</td></tr><tr><td>Domino's Pizza</td><td>10</td><td>100</td></tr><tr><td>Little Caesars</td><td>12</td><td>144</td></table>"
-
-table = BeautifulSoup(html, 'html5lib')
-
-table_row = table.find_all(name = 'tr')
-
-first_row = table_row[0]
-print(first_row)
-# <tr><td>Pizza Place</td><td>Orders</td><td>Slices</td></tr>
-
-print(first_row.td)
-# <td>Pizza Place</td>
-
-for i, row in enumerate(table_row):
-    print("row", i)
-    cells = row.find_all("td")
-
-    for j, cell in enumerate(cells):
-        print("column", j, "cell", cell)
