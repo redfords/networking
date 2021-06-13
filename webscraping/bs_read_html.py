@@ -4,7 +4,7 @@ import pandas as pd
 
 url = "https://en.wikipedia.org/wiki/World_population"
 
-data  = requests.get(url).text
+data = requests.get(url).text
 
 soup = BeautifulSoup(data, "html5lib")
 
