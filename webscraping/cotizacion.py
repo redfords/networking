@@ -57,9 +57,9 @@ if __name__ == "__main__":
 
     path = str(sys.argv[1])
     date = datetime.date.today()
-    year = str(date.year)
-    month = str('{:02d}'.format(date.month))
-    day = str('{:02d}'.format(date.day))
+    year = f'{date:%Y}'
+    month = f'{date:%m}'
+    day = f'{date:%d}'
     full_path = path + '/' + year + '/' + month
 
     if not os.path.exists(full_path):
