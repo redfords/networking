@@ -29,14 +29,14 @@ def get_month(date, delta):
                        31, 30, 31, 30, 31, 31, 30, 31, 30, 31][m - 1])
     return date.replace(day=d, month=m, year=y)
 
-def parser(rows, fecha_desde):
+def parser(rows, from_date):
     tabla_final = pd.DataFrame()
     
     for i in range(0, int(len(list(rows)) / 3)):
-        fecha = pd.to_datetime(rows[3 * i].text.strip(), format='%d-%m-%Y')
+        date = pd.to_datetime(rows[3 * i].text.strip(), format='%d-%m-%Y')
 
         dic = dict()
-        dic['fecha'] = fecha
+        dic['fecha'] = date
         dic['comprador'] = rows[3 * i + 1].text.strip()
         dic['vendedor'] = rows[3 * i + 1].text.strip()
         
@@ -50,16 +50,16 @@ def parser(rows, fecha_desde):
 if __name__ == "__main__":
     tabla_anual = pd.DataFrame()
     rows = scrap()
-    fecha_desde = get_month(datetime.date.today(), - 3)
+    from_date = get_month(datetime.date.today(), - 3)
 
-    tabla = parser(rows, fecha_desde)
+    tabla = parser(rows, from_date)
     tabla_anual = pd.concat([tabla_anual, tabla], axis=0)
 
     path = str(sys.argv[1])
-    fecha = datetime.date.today()
-    year = str(fecha.year)
-    month = str('{:02d}'.format(fecha.month))
-    day = str('{:02d}'.format(fecha.day))
+    date = datetime.date.today()
+    year = str(date.year)
+    month = str('{:02d}'.format(date.month))
+    day = str('{:02d}'.format(date.day))
     full_path = path + '/' + year + '/' + month
 
     if not os.path.exists(full_path):
