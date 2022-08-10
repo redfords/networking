@@ -32,3 +32,19 @@ def get_month(date, delta):
 def parser(filas, fecha_desde):
     tabla_final = pd.DataFrame()
     
+    for i in range(0, int(len(list(filas)) / 3)):
+        fecha = pd.to_datetime(filas[3 * i].text.strip(), format='%d-%m-%Y')
+
+        dic = dict()
+        dic['fecha'] = fecha
+        dic['comprador'] = filas[3 * i + 1].text.strip()
+        dic['vendedor'] = filas[3 * i + 1].text.strip()
+        
+        fila = pd.DataFrame.from_dict(dic, orient='index').transpose().set_index('fecha')
+        fila.index = pd.to_datetime(fila.index, format='%d-%m-%Y')
+
+        tabla_final = pd.concat([tabla_final, fila], axis=0)
+
+    return tabla_final
+
+
