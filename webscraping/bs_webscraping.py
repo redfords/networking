@@ -12,7 +12,7 @@ soup = BeautifulSoup(data, "html5lib")
 for link in soup.find_all('a', href = True):  # a link is represented by the tag <a>
     print(link.get('href'))
 
-# scape all images
+# sceape all images
 for link in soup.find_all('img'): # an image is represented by the tag <img>
     print(link)
     print(link.get('src'))
